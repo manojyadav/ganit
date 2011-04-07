@@ -1,0 +1,8 @@
+.nodeTypeDialog{
+    border: 1px solid black;
+    position: fixed;
+    display: none;
+    top: 100px;
+    left: 100px;
+    width: 400px;
+}
