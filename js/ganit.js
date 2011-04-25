@@ -39,6 +39,13 @@ $(function(){
             $(left).text("Begin").click(showNodeTypes).appendTo(currentNode);
             $(mo).text("-").click(showNodeTypes).appendTo(currentNode);
             $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
+        }else if (choice == 'Cross Product'){
+            var left = createMathElement("mrow");
+            var mo = createMathElement("mo");
+            var right = createMathElement("mrow");
+            $(left).text("Begin").click(showNodeTypes).appendTo(currentNode);
+            $(mo).text("×").click(showNodeTypes).appendTo(currentNode);
+            $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
         }
         
         $(".nodeTypeDialog").hide();
