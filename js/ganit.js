@@ -7,7 +7,9 @@ $(function(){
     
     var showNodeTypes = function(){
         currentNode = this;
-        $(".nodeTypeDialog").show();
+        $(".nodeTypeDialog").css({
+            "left": "100px",
+        });
     };
 
     $("mrow").click(showNodeTypes);
@@ -48,6 +50,8 @@ $(function(){
             $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
         }
         
-        $(".nodeTypeDialog").hide();
+        $(".nodeTypeDialog").css({
+            "left": "2000px"
+        });
     });
 });
