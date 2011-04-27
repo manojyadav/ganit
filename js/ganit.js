@@ -48,10 +48,19 @@ $(function(){
             $(left).text("Begin").click(showNodeTypes).appendTo(currentNode);
             $(mo).text("×").click(showNodeTypes).appendTo(currentNode);
             $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
+        }else if (choice == 'Number'){
+            $(".numberDialog").css("left", "100px");
         }
         
         $(".nodeTypeDialog").css({
             "left": "2000px"
         });
+    });
+    
+    $(".numberDialog .ok").click(function(){
+        var mn = createMathElement("mn");
+        var num = $(".numberDialog .number").val();
+        $(mn).text(num).appendTo(currentNode);
+        $(".numberDialog").css("left", "2000px");
     });
 });
