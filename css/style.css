@@ -1,8 +1,5 @@
 .nodeTypeDialog, .numberDialog{
     border: 1px solid black;
-    position: fixed;
-    top: 100px;
-    left: 2000px;
     width: 400px;
     -moz-transition: all .25s ease-out;
 }

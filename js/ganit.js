@@ -1,3 +1,25 @@
+$.fn.swoopIn = function(){
+    this.css({
+        "left": "100px",
+        "position": "fixed",
+        "top": "100px",
+        "-moz-transition": "all .25s ease-out",
+        "-o-transition": "all .25s ease-out",
+    });
+    return this;
+};
+
+$.fn.swoopOut = function(){
+    this.css({
+        "left": "2000px",
+        "position": "fixed",
+        "top": "100px",
+        "-moz-transition": "all .25s ease-out",
+        "-o-transition": "all .25s ease-out",
+    });
+    return this;
+};
+
 $(function(){
     var currentNode;
 
@@ -7,9 +29,7 @@ $(function(){
     
     var showNodeTypes = function(){
         currentNode = this;
-        $(".nodeTypeDialog").css({
-            "left": "100px",
-        });
+        $(".nodeTypeDialog").swoopIn();
     };
 
     $("mrow").click(showNodeTypes);
@@ -49,18 +69,18 @@ $(function(){
             $(mo).text("×").click(showNodeTypes).appendTo(currentNode);
             $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
         }else if (choice == 'Number'){
-            $(".numberDialog").css("left", "100px");
+            $(".numberDialog").swoopIn();
         }
         
-        $(".nodeTypeDialog").css({
-            "left": "2000px"
-        });
+        $(".nodeTypeDialog").swoopOut();
     });
     
     $(".numberDialog .ok").click(function(){
         var mn = createMathElement("mn");
         var num = $(".numberDialog .number").val();
         $(mn).text(num).appendTo(currentNode);
-        $(".numberDialog").css("left", "2000px");
+        $(".numberDialog").swoopOut();
     });
+    
+    $(".numberDialog, .nodeTypeDialog").swoopOut();
 });
