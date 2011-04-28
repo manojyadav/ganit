@@ -47,6 +47,7 @@ $(function(){
             $(left).text("Begin").click(showNodeTypes).appendTo(currentNode);
             $(mo).text("+").appendTo(currentNode);
             $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
+            $("#markup").text($("#code").html());
         }else if (choice == 'Division'){
             var mfrac = createMathElement("mfrac");
             var mrow1 = createMathElement("mrow");

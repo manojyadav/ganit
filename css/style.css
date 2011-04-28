@@ -1,9 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .nodeTypeDialog, .numberDialog{
     border: 1px solid black;
     width: 400px;
-    -moz-transition: all .25s ease-out;
 }
 
 .numberDialog{
     text-align: center;
+}
+
+.designerArea{
+    height: 50%;
+}
+
+.markupArea{
+    height: 50%;
+    border: 1px solid black;
+}
+
+.markupArea h2{
+    background-color: black;
+    color: white;
+    text-shadow: 1px 1px 2px white;
+}
+
+#markup{
+    padding: 10px;
 }
