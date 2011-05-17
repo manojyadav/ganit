@@ -31,44 +31,48 @@ $(function(){
         currentNode = this;
         $(".nodeTypeDialog").swoopIn();
     };
-
+    
+    var createBinaryStructure = function(operation){
+        var left = createMathElement("mrow");
+        var mo = createMathElement("mo");
+        var right = createMathElement("mrow");
+        var parent = createMathElement("mrow");
+        $(left).text("Begin").click(showNodeTypes).appendTo(parent);
+        $(mo).text(operation).click(showNodeTypes).appendTo(parent);
+        $(right).text("Begin").click(showNodeTypes).appendTo(parent);
+        return parent;
+    };
+    
+    var updateMarkup = function(){
+        $("#markup").text($("#code").html());
+    };
+    
     $("mrow").click(showNodeTypes);
     
     $(".choices li").click(function(){
         var choice = $(this).text();
         
-        $(currentNode).unbind('click', showNodeTypes);
-        $(currentNode).empty();
-        
         if (choice == 'Addition'){
-            var left = createMathElement("mrow");
-            var mo = createMathElement("mo");
-            var right = createMathElement("mrow");
-            $(left).text("Begin").click(showNodeTypes).appendTo(currentNode);
-            $(mo).text("+").appendTo(currentNode);
-            $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
-            $("#markup").text($("#code").html());
+            $(createBinaryStructure("+")).insertAfter(currentNode);
+            $(currentNode).remove();
+            updateMarkup();
         }else if (choice == 'Division'){
             var mfrac = createMathElement("mfrac");
             var mrow1 = createMathElement("mrow");
             var mrow2 = createMathElement("mrow");
             $(mrow1).text("Begin").click(showNodeTypes).appendTo(mfrac);
             $(mrow2).text("Begin").click(showNodeTypes).appendTo(mfrac);
-            $(currentNode).append(mfrac);
+            $(mfrac).insertAfter(currentNode);
+            $(currentNode).remove();
+            $("#markup").text($("#code").html());
         }else if (choice == 'Subtraction'){
-            var left = createMathElement("mrow");
-            var mo = createMathElement("mo");
-            var right = createMathElement("mrow");
-            $(left).text("Begin").click(showNodeTypes).appendTo(currentNode);
-            $(mo).text("-").appendTo(currentNode);
-            $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
+            $(createBinaryStructure("-")).insertAfter(currentNode);
+            $(currentNode).remove();
+            updateMarkup();
         }else if (choice == 'Cross Product'){
-            var left = createMathElement("mrow");
-            var mo = createMathElement("mo");
-            var right = createMathElement("mrow");
-            $(left).text("Begin").click(showNodeTypes).appendTo(currentNode);
-            $(mo).text("×").appendTo(currentNode);
-            $(right).text("Begin").click(showNodeTypes).appendTo(currentNode);
+            $(createBinaryStructure("×")).insertAfter(currentNode);
+            $(currentNode).remove();
+            updateMarkup();
         }else if (choice == 'Number'){
             $(".numberDialog").swoopIn();
         }
@@ -79,8 +83,10 @@ $(function(){
     $(".numberDialog .ok").click(function(){
         var mn = createMathElement("mn");
         var num = $(".numberDialog .number").val();
-        $(mn).text(num).appendTo(currentNode);
+        $(mn).text(num).click(showNodeTypes).insertAfter(currentNode);
+        $(currentNode).remove();
         $(".numberDialog").swoopOut();
+        updateMarkup();
     });
     
     $(".numberDialog, .nodeTypeDialog").swoopOut();

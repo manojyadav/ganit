@@ -1,11 +1,14 @@
 *{
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .nodeTypeDialog, .numberDialog{
     border: 1px solid black;
+    background: -moz-linear-gradient(gray, white, gray);
     width: 400px;
+    padding: 10px;
 }
 
 .numberDialog{
