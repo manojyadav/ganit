@@ -16,12 +16,12 @@
     height: 50%;
 }
 
-.markupArea{
+.markupArea, .designerArea{
     height: 50%;
     border: 1px solid black;
 }
 
-.markupArea h2{
+h2{
     background-color: black;
     color: white;
     text-shadow: 1px 1px 2px white;
