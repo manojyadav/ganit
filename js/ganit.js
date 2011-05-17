@@ -144,5 +144,9 @@ $(function(){
         updateMarkup();
     });
     
+    $(".nodeTypeDialog .cancel").click(function(){
+        $(".nodeTypeDialog").swoopOut();
+    });
+    
     $(".dialog").swoopOut();
 });
