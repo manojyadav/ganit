@@ -81,6 +81,9 @@ $(function(){
             case 'Number':
                 $(".numberDialog").swoopIn();
                 break;
+            case 'Identifier':
+                $(".identifierDialog").swoopIn();
+                break;
         }
         
         $(".nodeTypeDialog").swoopOut();
@@ -95,5 +98,14 @@ $(function(){
         updateMarkup();
     });
     
-    $(".numberDialog, .nodeTypeDialog").swoopOut();
+    $(".identifierDialog .ok").click(function(){
+        var mi = createMathElement("mi");
+        var identifier = $(".identifierDialog input").val();
+        $(mi).text(identifier).click(showNodeTypes).insertAfter(currentNode);
+        $(currentNode).remove();
+        $(".identifierDialog").swoopOut();
+        updateMarkup();
+    });
+    
+    $(".dialog").swoopOut();
 });
