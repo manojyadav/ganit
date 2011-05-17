@@ -113,6 +113,14 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
+            case 'Root':
+                var mroot = createMathElement("mroot");
+                $(createRecursiveNode()).appendTo(mroot);
+                $(createRecursiveNode()).appendTo(mroot);
+                $(mroot).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
         }
         
         $(".nodeTypeDialog").swoopOut();
