@@ -47,6 +47,12 @@ $(function(){
         $("#markup").text($("#code").html());
     };
     
+    var createRecursiveNode = function(){
+        var node = createMathElement("mrow");
+        $(node).text("Begin").click(showNodeTypes);
+        return node;
+    };
+    
     $("mrow").click(showNodeTypes);
     
     $(".choices li").click(function(){
@@ -83,6 +89,18 @@ $(function(){
                 break;
             case 'Identifier':
                 $(".identifierDialog").swoopIn();
+                break;
+            case 'Equality':
+                $(createBinaryStructure("=")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Square Root':
+                var msqrt = createMathElement("msqrt");
+                $(createRecursiveNode()).appendTo(msqrt);
+                $(msqrt).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
                 break;
         }
         
