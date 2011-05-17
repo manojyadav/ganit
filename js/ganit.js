@@ -98,6 +98,14 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
+            case 'Power':
+                var msup = createMathElement("msup");
+                $(createRecursiveNode()).appendTo(msup);
+                $(createRecursiveNode()).appendTo(msup);
+                $(msup).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
         }
         
         $(".nodeTypeDialog").swoopOut();
