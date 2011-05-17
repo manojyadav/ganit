@@ -52,29 +52,35 @@ $(function(){
     $(".choices li").click(function(){
         var choice = $(this).text();
         
-        if (choice == 'Addition'){
-            $(createBinaryStructure("+")).insertAfter(currentNode);
-            $(currentNode).remove();
-            updateMarkup();
-        }else if (choice == 'Division'){
-            var mfrac = createMathElement("mfrac");
-            var mrow1 = createMathElement("mrow");
-            var mrow2 = createMathElement("mrow");
-            $(mrow1).text("Begin").click(showNodeTypes).appendTo(mfrac);
-            $(mrow2).text("Begin").click(showNodeTypes).appendTo(mfrac);
-            $(mfrac).insertAfter(currentNode);
-            $(currentNode).remove();
-            $("#markup").text($("#code").html());
-        }else if (choice == 'Subtraction'){
-            $(createBinaryStructure("-")).insertAfter(currentNode);
-            $(currentNode).remove();
-            updateMarkup();
-        }else if (choice == 'Cross Product'){
-            $(createBinaryStructure("×")).insertAfter(currentNode);
-            $(currentNode).remove();
-            updateMarkup();
-        }else if (choice == 'Number'){
-            $(".numberDialog").swoopIn();
+        switch (choice){
+            case 'Addition':
+                $(createBinaryStructure("+")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Division':
+                var mfrac = createMathElement("mfrac");
+                var mrow1 = createMathElement("mrow");
+                var mrow2 = createMathElement("mrow");
+                $(mrow1).text("Begin").click(showNodeTypes).appendTo(mfrac);
+                $(mrow2).text("Begin").click(showNodeTypes).appendTo(mfrac);
+                $(mfrac).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Subtration':
+                $(createBinaryStructure("-")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Cross Product':
+                $(createBinaryStructure("×")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Number':
+                $(".numberDialog").swoopIn();
+                break;
         }
         
         $(".nodeTypeDialog").swoopOut();
