@@ -106,6 +106,13 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
+            case 'Round Brackets':
+                var mfenced = createMathElement("mfenced");
+                $(createRecursiveNode()).appendTo(mfenced);
+                $(mfenced).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
         }
         
         $(".nodeTypeDialog").swoopOut();
