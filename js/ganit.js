@@ -86,7 +86,7 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
-            case 'Subtration':
+            case 'Subtraction':
                 $(createBinaryStructure("-")).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
@@ -191,7 +191,6 @@ $.fn.setPopupPosition = function () {
     {
         top = 0;
     }
-    console.log(top);
-    this.css({"left": left, "top": top});
+    this.css({"left": left + "px", "top": top + "px"});
     return this;
 }
