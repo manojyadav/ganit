@@ -1,19 +1,12 @@
 $.fn.swoopIn = function(){
-    this.css({
-        "left": "100px",
-        "position": "fixed",
-        "top": "100px",
-        "-moz-transition": "all .25s ease-out",
-        "-o-transition": "all .25s ease-out",
-    });
+    this.setPopupPosition();
+    this.css({"display":"block", "-moz-transition": "all .25s ease-out", "-o-transition": "all .25s ease-out"});
     return this;
 };
 
 $.fn.swoopOut = function(){
     this.css({
         "left": "2000px",
-        "position": "fixed",
-        "top": "100px",
         "-moz-transition": "all .25s ease-out",
         "-o-transition": "all .25s ease-out",
     });
@@ -181,4 +174,24 @@ $(function(){
     });
     
     $(".dialog").swoopOut();
+    
+    $('span.close').click(function() {
+        $(this).parent().parent().swoopOut();
+    });
 });
+
+$.fn.setPopupPosition = function () {
+    var left = ($(window).width() - this.width()) / 2 + $(window).scrollLeft() - 22;
+    var top = ($(window).height() - this.height()) / 2 + $(window).scrollTop() - 22;
+    if (left < 0)
+    {
+        left = 0;
+    }
+    if (top < 0)
+    {
+        top = 0;
+    }
+    console.log(top);
+    this.css({"left": left, "top": top});
+    return this;
+}

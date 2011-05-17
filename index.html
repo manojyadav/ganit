@@ -1,51 +1,78 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
-        <title>MathML</title>
+        <title>Home - Ganit</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />       
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/ganit.js"></script>
     </head>
     <body>
-        <div class="designerArea">
-            <h2>Designer</h2>
-            <div id="code">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>Begin</mrow>
-                </math>
-            </div>
-        </div>
-        <div class="markupArea">
-            <h2>MathML Markup</h2>
-            <div id="markup"></div>
-        </div>
-        <div class="nodeTypeDialog dialog">
-            <ul class="choices">
-                <li>Addition</li>
-                <li>Division</li>
-                <li>Subtraction</li>
-                <li>Cross Product</li>
-                <li>Number</li>
-                <li>Identifier</li>
-                <li>Equality</li>
-                <li>Square Root</li>
-                <li>Root</li>
-                <li>Power</li>
-                <li>Round Brackets</li>
-                <li>Square Brackets</li>
-                <li>Curly Brackets</li>
-            </ul>
-            <button class="cancel">Cancel</button>
-        </div>
-        <div class="numberDialog dialog">
-            <p>Please enter a number</p>
-            <p><input class="number" type="number" /></p>
-            <p><button class="ok">OK</button></p>
-        </div>
-        <div class="identifierDialog dialog">
-            <p>Please enter an identifier</p>
-            <p><input type="text" /></p>
-            <p><button class="ok">OK</button></p>
-        </div>
+        <section id="page">
+            <header>
+                <hgroup>
+                    <h1>Ganit <span>the Web Based MathML Graphical Editor</span></h1>
+                </hgroup>
+                <nav class="clear">
+                    <ul>
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <section id="content">
+                <div class="designerArea">
+                    <h4>Editor</h4>
+                    <div id="code">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow>Begin</mrow></math>
+                    </div>
+                </div>
+                <div class="clear-both"></div>
+                <div class="markupArea">
+                    <h4>MathML Markup</h4>
+                    <div id="markup"></div>
+                </div>
+                <div class="nodeTypeDialog dialog">
+                    <h4>Choices <span class="close">X</span></h4>
+                    <div>
+                        <ul class="choices">
+                            <li>Addition</li>
+                            <li>Division</li>
+                            <li>Subtraction</li>
+                            <li>Cross Product</li>
+                            <li>Number</li>
+                            <li>Identifier</li>
+                            <li>Equality</li>
+                            <li>Square Root</li>
+                            <li>Root</li>
+                            <li>Power</li>
+                            <li>Round Brackets</li>
+                            <li>Square Brackets</li>
+                            <li>Curly Brackets</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="numberDialog dialog">
+                    <h4>Number <span class="close">X</span></h4>
+                    <div>
+                        <p>Please enter a number</p>
+                        <p><input class="number text-input" type="number" /></p>
+                        <p><button class="ok">OK</button></p>
+                    </div>
+                </div>
+                <div class="identifierDialog dialog">
+                    <h4>Identifier <span class="close">X</span></h4>
+                    <div>
+                        <p>Please enter an identifier</p>
+                        <p><input type="text" class="text-input" /></p>
+                        <p><button class="ok">OK</button></p>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+            <footer>Copyright &copy2011 - Ganit</footer>
+        </section>
+        <div id="layer"></div>
     </body>
 </html>
