@@ -40,6 +40,29 @@ $(function(){
         return parent;
     };
     
+    var createFenceStructure = function(type){
+        var mfenced = createMathElement("mfenced");
+        var open, close;
+        switch (type){
+            case 'square':
+                open = "[";
+                close = "]";
+                break;
+            case 'curly':
+                open = "{";
+                close = "}";
+                break;
+            default:
+            case 'round':
+                open = "(";
+                close = ")";
+                break;
+        }
+        $(mfenced).attr("open", open).attr("close", close);
+        $(createRecursiveNode()).appendTo(mfenced);
+        return mfenced;
+    };
+    
     var updateMarkup = function(){
         $("#markup").text($("#code").html());
     };
@@ -107,9 +130,7 @@ $(function(){
                 updateMarkup();
                 break;
             case 'Round Brackets':
-                var mfenced = createMathElement("mfenced");
-                $(createRecursiveNode()).appendTo(mfenced);
-                $(mfenced).insertAfter(currentNode);
+                $(createFenceStructure("round")).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
                 break;
@@ -120,6 +141,17 @@ $(function(){
                 $(mroot).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
+                break;
+            case 'Square Brackets':
+                $(createFenceStructure("square")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Curly Brackets':
+                $(createFenceStructure("curly")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
                 break;
         }
         
