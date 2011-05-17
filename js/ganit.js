@@ -33,13 +33,10 @@ $(function(){
     };
     
     var createBinaryStructure = function(operation){
-        var left = createMathElement("mrow");
-        var mo = createMathElement("mo");
-        var right = createMathElement("mrow");
         var parent = createMathElement("mrow");
-        $(left).text("Begin").click(showNodeTypes).appendTo(parent);
-        $(mo).text(operation).click(showNodeTypes).appendTo(parent);
-        $(right).text("Begin").click(showNodeTypes).appendTo(parent);
+        $(createRecursiveNode()).appendTo(parent);
+        $(createRecursiveNode(operation)).appendTo(parent);
+        $(createRecursiveNode()).appendTo(parent);
         return parent;
     };
     
@@ -47,9 +44,10 @@ $(function(){
         $("#markup").text($("#code").html());
     };
     
-    var createRecursiveNode = function(){
+    var createRecursiveNode = function(txt){
         var node = createMathElement("mrow");
-        $(node).text("Begin").click(showNodeTypes);
+        var t = (txt) ? txt : "Begin";
+        $(node).text(t).click(showNodeTypes);
         return node;
     };
     
@@ -66,10 +64,8 @@ $(function(){
                 break;
             case 'Division':
                 var mfrac = createMathElement("mfrac");
-                var mrow1 = createMathElement("mrow");
-                var mrow2 = createMathElement("mrow");
-                $(mrow1).text("Begin").click(showNodeTypes).appendTo(mfrac);
-                $(mrow2).text("Begin").click(showNodeTypes).appendTo(mfrac);
+                $(createRecursiveNode()).appendTo(mfrac);
+                $(createRecursiveNode()).appendTo(mfrac);
                 $(mfrac).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
