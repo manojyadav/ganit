@@ -175,8 +175,12 @@ $(function(){
         updateMarkup();
     });
     
-    $(".nodeTypeDialog .cancel").click(function(){
-        $(".nodeTypeDialog").swoopOut();
+    $(".symbols li").click(function(){
+        var mi = createMathElement("mi");
+        $(mi).text($(this).html()).click(showNodeTypes).insertAfter(currentNode);
+        $(currentNode).remove();
+        $(".identifierDialog").swoopOut();
+        updateMarkup();
     });
     
     $(".dialog").swoopOut();

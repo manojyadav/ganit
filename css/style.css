@@ -1,4 +1,4 @@
-* { margin:0; padding:0; }
+* { margin:0; padding:0; list-style: none;}
 body { font-size:12px; background-color:#355664; font-family:"Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif; }
 img { border:none; }
 header,footer, article,section, hgroup,nav, figure { display:block; }
@@ -114,3 +114,15 @@ background-image: -moz-linear-gradient(
 .text-input, .nodeTypeDialog li {-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius:6px;}
 .nodeTypeDialog li {list-style: none; font-weight: bold; border: 1px solid #fff; padding: 2px 8px 0; margin-bottom: 4px; cursor: pointer;}
 span.close {display: block; float: right; text-align: center; cursor: pointer;}
+.symbols{
+    max-width: 190px;
+}
+.symbols li{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border: 1px solid white;
+    padding: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
