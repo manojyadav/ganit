@@ -18,7 +18,7 @@ header h1 {padding: 0;}
 header h1 span {font-size: 14px; color: #221616; font-style: italic; font-weight: normal;}
 nav ul li{ display:inline; }
 nav ul li a, nav ul li a:visited { color:#ffffff; display:block; float:left; font-size:16px; font-weight:bold; margin:4px 8px; padding:3px 16px; text-shadow:0 1px 1px white; text-transform:uppercase; }
-nav ul li.active a, .nodeTypeDialog li:hover {
+nav ul li.active a, .nodeTypeDialog li:hover, .functionsDialog li:hover {
     background-image: -webkit-gradient(
     linear,
     left bottom,
@@ -111,8 +111,8 @@ background-image: -moz-linear-gradient(
     rgb(171,129,40) 83%
 );   
 }
-.text-input, .nodeTypeDialog li {-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius:6px;}
-.nodeTypeDialog li {list-style: none; font-weight: bold; border: 1px solid #fff; padding: 2px 8px 0; margin-bottom: 4px; cursor: pointer;}
+.text-input, .nodeTypeDialog li, .functionsDialog li {-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius:6px;}
+.nodeTypeDialog li, .functionsDialog li {list-style: none; font-weight: bold; border: 1px solid #fff; padding: 2px 8px 0; margin-bottom: 4px; cursor: pointer;}
 span.close {display: block; float: right; text-align: center; cursor: pointer;}
 .symbols{
     max-width: 190px;

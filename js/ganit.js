@@ -161,6 +161,19 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
+            case 'Function':
+                var mrow = createMathElement("mrow");
+                var mo = createMathElement("mo");
+                var mfenced = createFenceStructure();
+                $(mo).click(function(){
+                    currentNode = this;
+                    $(".functionsDialog").swoopIn();
+                }).text('ƒ').appendTo(mrow);
+                $(mfenced).appendTo(mrow);
+                $(mrow).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
         }
         
         $(".nodeTypeDialog").swoopOut();
@@ -199,6 +212,12 @@ $(function(){
     $(".operandsDialog .symbols li").click(function(){
         $(currentNode).text(this.innerHTML);
         $(".operandsDialog").swoopOut();
+        updateMarkup();
+    });
+    
+    $(".functionsDialog .functions li").click(function(){
+        $(currentNode).text(this.innerHTML);
+        $(".functionsDialog").swoopOut();
         updateMarkup();
     });
     
