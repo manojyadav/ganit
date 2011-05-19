@@ -20,7 +20,8 @@ $(function(){
         return document.createElementNS("http://www.w3.org/1998/Math/MathML", tag);
     };
     
-    var showNodeTypes = function(){
+    var showNodeTypes = function(event){
+        event.stopPropagation();
         currentNode = this;
         $(".nodeTypeDialog").swoopIn();
     };
@@ -39,23 +40,10 @@ $(function(){
     
     var createFenceStructure = function(type){
         var mfenced = createMathElement("mfenced");
-        var open, close;
-        switch (type){
-            case 'square':
-                open = "[";
-                close = "]";
-                break;
-            case 'curly':
-                open = "{";
-                close = "}";
-                break;
-            default:
-            case 'round':
-                open = "(";
-                close = ")";
-                break;
-        }
-        $(mfenced).attr("open", open).attr("close", close);
+        $(mfenced).click(function(){
+            currentNode = this;
+            $(".bracketsDialog").swoopIn();
+        });
         $(createRecursiveNode()).appendTo(mfenced);
         return mfenced;
     };
@@ -128,7 +116,7 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
-            case 'Round Brackets':
+            case 'Brackets':
                 $(createFenceStructure("round")).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
@@ -138,16 +126,6 @@ $(function(){
                 $(createRecursiveNode()).appendTo(mroot);
                 $(createRecursiveNode()).appendTo(mroot);
                 $(mroot).insertAfter(currentNode);
-                $(currentNode).remove();
-                updateMarkup();
-                break;
-            case 'Square Brackets':
-                $(createFenceStructure("square")).insertAfter(currentNode);
-                $(currentNode).remove();
-                updateMarkup();
-                break;
-            case 'Curly Brackets':
-                $(createFenceStructure("curly")).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
                 break;
@@ -219,6 +197,30 @@ $(function(){
         $(currentNode).text(this.innerHTML);
         $(".functionsDialog").swoopOut();
         updateMarkup();
+    });
+    
+    $(".bracketsDialog .brackets li").click(function(){
+        var bracketType = $(this).data("type");
+        var open, close;
+        switch (bracketType){
+            case 'square':
+                open = "[";
+                close = "]";
+                break;
+            case 'curly':
+                open = "{";
+                close = "}";
+                break;
+            case 'round':
+                open = "(";
+                close = ")";
+                break;
+            case 'pipe':
+                open = close = "|";
+                break;
+        }
+        $(currentNode).attr({"open": open, "close": close});
+        $(".bracketsDialog").swoopOut();
     });
     
     $(".dialog").swoopOut();
