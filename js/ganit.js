@@ -152,6 +152,17 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
+            case 'Summation':
+                var munderover = createMathElement("munderover");
+                var mo = createMathElement("mo");
+                $(mo).text("∑").appendTo(munderover);
+                $(createRecursiveNode()).appendTo(munderover);
+                $(createRecursiveNode()).appendTo(munderover);
+                $(createRecursiveNode()).insertAfter(currentNode);
+                $(munderover).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
         }
         
         $(".nodeTypeDialog").swoopOut();
