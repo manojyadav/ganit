@@ -156,10 +156,14 @@ $(function(){
     $(".numberDialog .ok").click(function(){
         var mn = createMathElement("mn");
         var num = $(".numberDialog .number").val();
-        $(mn).text(num).click(showNodeTypes).insertAfter(currentNode);
-        $(currentNode).remove();
-        $(".numberDialog").swoopOut();
-        updateMarkup();
+        if (!isNaN(num)){
+            $(mn).text(num).click(showNodeTypes).insertAfter(currentNode);
+            $(currentNode).remove();
+            $(".numberDialog").swoopOut();
+            updateMarkup();
+        }else{
+            alert("Sorry, thats not a number!");
+        }
     });
     
     $(".identifierDialog .ok").click(function(){
