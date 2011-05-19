@@ -163,6 +163,18 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
+            case 'Integration':
+                var munderover = createMathElement("munderover");
+                var mo = createMathElement("mo");
+                $(mo).text("∫").appendTo(munderover);
+                $(createRecursiveNode()).appendTo(munderover);
+                $(createRecursiveNode()).appendTo(munderover);
+                $(createRecursiveNode()).insertAfter(currentNode);
+                $(munderover).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+                break;
         }
         
         $(".nodeTypeDialog").swoopOut();
