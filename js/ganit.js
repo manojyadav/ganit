@@ -29,7 +29,10 @@ $(function(){
         var parent = createMathElement("mrow");
         var operation = createMathElement("mo");
         $(createRecursiveNode()).appendTo(parent);
-        $(operation).text(operationSymbol).appendTo(parent);
+        $(operation).click(function(){
+            currentNode = this;
+            $(".operandsDialog").swoopIn();
+        }).text(operationSymbol).appendTo(parent);
         $(createRecursiveNode()).appendTo(parent);
         return parent;
     };
@@ -185,11 +188,17 @@ $(function(){
         updateMarkup();
     });
     
-    $(".symbols li").click(function(){
+    $(".identifierDialog .symbols li").click(function(){
         var mi = createMathElement("mi");
         $(mi).text($(this).html()).click(showNodeTypes).insertAfter(currentNode);
         $(currentNode).remove();
         $(".identifierDialog").swoopOut();
+        updateMarkup();
+    });
+    
+    $(".operandsDialog .symbols li").click(function(){
+        $(currentNode).text(this.innerHTML);
+        $(".operandsDialog").swoopOut();
         updateMarkup();
     });
     
