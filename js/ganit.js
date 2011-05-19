@@ -25,10 +25,11 @@ $(function(){
         $(".nodeTypeDialog").swoopIn();
     };
     
-    var createBinaryStructure = function(operation){
+    var createBinaryStructure = function(operationSymbol){
         var parent = createMathElement("mrow");
+        var operation = createMathElement("mo");
         $(createRecursiveNode()).appendTo(parent);
-        $(createRecursiveNode(operation)).appendTo(parent);
+        $(operation).text(operationSymbol).appendTo(parent);
         $(createRecursiveNode()).appendTo(parent);
         return parent;
     };
@@ -147,6 +148,15 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
+            case 'Invisible Product':
+                $(createBinaryStructure("\u2062")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Dot Product':
+                $(createBinaryStructure("•")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
                 break;
         }
         
