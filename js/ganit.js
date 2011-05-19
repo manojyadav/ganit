@@ -1,6 +1,6 @@
 $.fn.swoopIn = function(){
     this.setPopupPosition();
-    this.css({"display":"block", "-moz-transition": "all .25s ease-out", "-o-transition": "all .25s ease-out"});
+    this.css({"-moz-transition": "all .25s ease-out", "-o-transition": "all .25s ease-out"});
     return this;
 };
 
@@ -98,9 +98,11 @@ $(function(){
                 break;
             case 'Number':
                 $(".numberDialog").swoopIn();
+                $(".numberDialog .number").val('').focus();
                 break;
             case 'Identifier':
                 $(".identifierDialog").swoopIn();
+                $(".identifierDialog input").val('').focus();
                 break;
             case 'Equality':
                 $(createBinaryStructure("=")).insertAfter(currentNode);

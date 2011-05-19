@@ -93,7 +93,7 @@ background-image: -moz-linear-gradient(
 #markup {border: 2px solid #B53D06; border-top: none;}
 .nodeTypeDialog div, .dialog div {height: auto;}
 .text-input {border: 1px solid #4F5252;}
-.dialog {display: none; position: fixed;}
+.dialog {position: fixed; left: 2000px;}
 .dialog div {
  color: #fff;
  background-image: -webkit-gradient(
