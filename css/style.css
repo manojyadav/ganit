@@ -87,7 +87,8 @@ background-image: -moz-linear-gradient(
     rgb(171,38,69) 83%
 );       
 }
-#code, #markup, .dialog div {padding: 10px; -moz-border-radius: 0 0 10px 10px; -webkit-border-radius: 0 0 10px 10px; border-radius: 0 0 10px 10px; min-height: 160px; background-color: #ffffff; color: #000; font-weight: bold;}
+#code, #markup, .dialog div {padding: 10px; -moz-border-radius: 0 0 10px 10px; -webkit-border-radius: 0 0 10px 10px; border-radius: 0 0 10px 10px; background-color: #ffffff; color: #000; font-weight: bold;}
+#code, #markup {min-height: 160px;}
 #code {margin-bottom: 16px; font-size: 14px; border: 2px solid #A92645; border-top: none;}
 #markup {border: 2px solid #B53D06; border-top: none;}
 .nodeTypeDialog div, .dialog div {height: auto;}
