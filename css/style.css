@@ -97,7 +97,7 @@ background-image: -moz-linear-gradient(
 #markup {border: 2px solid #B53D06; border-top: none;}
 .nodeTypeDialog div, .dialog div {height: auto;}
 .text-input {border: 1px solid #4F5252; padding: 4px; font-size: 11px;}
-.dialog {position: fixed; left: 2000px;}
+.dialog {position: fixed; left: 2000px; z-index: 1010;}
 .dialog div {
  background-color: #A27324;
  border: 2px solid #222424;
@@ -142,3 +142,4 @@ color: #FFFFFF;
     cursor: pointer;
     margin: 5px;
 }
+#layer {width: 100%; top:0; left:0; position: fixed; display: none; height: 100%; z-index: 1000; background-color: #aaaaaa; opacity:0.4;}

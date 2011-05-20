@@ -1,10 +1,12 @@
 $.fn.swoopIn = function(){
+    $('#layer').show();
     this.setPopupPosition();
     this.css({"-moz-transition": "all .25s ease-out", "-o-transition": "all .25s ease-out"});
     return this;
 };
 
 $.fn.swoopOut = function(){
+    $('#layer').hide();
     this.css({
         "left": "2000px",
         "-moz-transition": "all .25s ease-out",
