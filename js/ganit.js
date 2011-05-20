@@ -1,6 +1,6 @@
 $.fn.swoopIn = function(){
     this.setPopupPosition();
-    this.css({"display":"block", "-moz-transition": "all .25s ease-out", "-o-transition": "all .25s ease-out"});
+    this.css({"-moz-transition": "all .25s ease-out", "-o-transition": "all .25s ease-out"});
     return this;
 };
 
@@ -20,38 +20,30 @@ $(function(){
         return document.createElementNS("http://www.w3.org/1998/Math/MathML", tag);
     };
     
-    var showNodeTypes = function(){
+    var showNodeTypes = function(event){
+        event.stopPropagation();
         currentNode = this;
         $(".nodeTypeDialog").swoopIn();
     };
     
-    var createBinaryStructure = function(operation){
+    var createBinaryStructure = function(operationSymbol){
         var parent = createMathElement("mrow");
+        var operation = createMathElement("mo");
         $(createRecursiveNode()).appendTo(parent);
-        $(createRecursiveNode(operation)).appendTo(parent);
+        $(operation).click(function(){
+            currentNode = this;
+            $(".operandsDialog").swoopIn();
+        }).text(operationSymbol).appendTo(parent);
         $(createRecursiveNode()).appendTo(parent);
         return parent;
     };
     
     var createFenceStructure = function(type){
         var mfenced = createMathElement("mfenced");
-        var open, close;
-        switch (type){
-            case 'square':
-                open = "[";
-                close = "]";
-                break;
-            case 'curly':
-                open = "{";
-                close = "}";
-                break;
-            default:
-            case 'round':
-                open = "(";
-                close = ")";
-                break;
-        }
-        $(mfenced).attr("open", open).attr("close", close);
+        $(mfenced).click(function(){
+            currentNode = this;
+            $(".bracketsDialog").swoopIn();
+        });
         $(createRecursiveNode()).appendTo(mfenced);
         return mfenced;
     };
@@ -98,9 +90,11 @@ $(function(){
                 break;
             case 'Number':
                 $(".numberDialog").swoopIn();
+                $(".numberDialog .number").val('').focus();
                 break;
             case 'Identifier':
                 $(".identifierDialog").swoopIn();
+                $(".identifierDialog input").val('').focus();
                 break;
             case 'Equality':
                 $(createBinaryStructure("=")).insertAfter(currentNode);
@@ -122,7 +116,7 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
-            case 'Round Brackets':
+            case 'Brackets':
                 $(createFenceStructure("round")).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
@@ -135,13 +129,48 @@ $(function(){
                 $(currentNode).remove();
                 updateMarkup();
                 break;
-            case 'Square Brackets':
-                $(createFenceStructure("square")).insertAfter(currentNode);
+            case 'Invisible Product':
+                $(createBinaryStructure("\u2062")).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
                 break;
-            case 'Curly Brackets':
-                $(createFenceStructure("curly")).insertAfter(currentNode);
+            case 'Dot Product':
+                $(createBinaryStructure("•")).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Function':
+                var mrow = createMathElement("mrow");
+                var mo = createMathElement("mo");
+                var mfenced = createFenceStructure();
+                $(mo).click(function(){
+                    currentNode = this;
+                    $(".functionsDialog").swoopIn();
+                }).text('ƒ').appendTo(mrow);
+                $(mfenced).appendTo(mrow);
+                $(mrow).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Summation':
+                var munderover = createMathElement("munderover");
+                var mo = createMathElement("mo");
+                $(mo).text("∑").appendTo(munderover);
+                $(createRecursiveNode()).appendTo(munderover);
+                $(createRecursiveNode()).appendTo(munderover);
+                $(createRecursiveNode()).insertAfter(currentNode);
+                $(munderover).insertAfter(currentNode);
+                $(currentNode).remove();
+                updateMarkup();
+                break;
+            case 'Integration':
+                var munderover = createMathElement("munderover");
+                var mo = createMathElement("mo");
+                $(mo).text("∫").appendTo(munderover);
+                $(createRecursiveNode()).appendTo(munderover);
+                $(createRecursiveNode()).appendTo(munderover);
+                $(createRecursiveNode()).insertAfter(currentNode);
+                $(munderover).insertAfter(currentNode);
                 $(currentNode).remove();
                 updateMarkup();
                 break;
@@ -154,10 +183,14 @@ $(function(){
     $(".numberDialog .ok").click(function(){
         var mn = createMathElement("mn");
         var num = $(".numberDialog .number").val();
-        $(mn).text(num).click(showNodeTypes).insertAfter(currentNode);
-        $(currentNode).remove();
-        $(".numberDialog").swoopOut();
-        updateMarkup();
+        if (!isNaN(num)){
+            $(mn).text(num).click(showNodeTypes).insertAfter(currentNode);
+            $(currentNode).remove();
+            $(".numberDialog").swoopOut();
+            updateMarkup();
+        }else{
+            alert("Sorry, thats not a number!");
+        }
     });
     
     $(".identifierDialog .ok").click(function(){
@@ -169,8 +202,48 @@ $(function(){
         updateMarkup();
     });
     
-    $(".nodeTypeDialog .cancel").click(function(){
-        $(".nodeTypeDialog").swoopOut();
+    $(".identifierDialog .symbols li").click(function(){
+        var mi = createMathElement("mi");
+        $(mi).text($(this).html()).click(showNodeTypes).insertAfter(currentNode);
+        $(currentNode).remove();
+        $(".identifierDialog").swoopOut();
+        updateMarkup();
+    });
+    
+    $(".operandsDialog .symbols li").click(function(){
+        $(currentNode).text(this.innerHTML);
+        $(".operandsDialog").swoopOut();
+        updateMarkup();
+    });
+    
+    $(".functionsDialog .functions li").click(function(){
+        $(currentNode).text(this.innerHTML);
+        $(".functionsDialog").swoopOut();
+        updateMarkup();
+    });
+    
+    $(".bracketsDialog .brackets li").click(function(){
+        var bracketType = $(this).data("type");
+        var open, close;
+        switch (bracketType){
+            case 'square':
+                open = "[";
+                close = "]";
+                break;
+            case 'curly':
+                open = "{";
+                close = "}";
+                break;
+            case 'round':
+                open = "(";
+                close = ")";
+                break;
+            case 'pipe':
+                open = close = "|";
+                break;
+        }
+        $(currentNode).attr({"open": open, "close": close});
+        $(".bracketsDialog").swoopOut();
     });
     
     $(".dialog").swoopOut();

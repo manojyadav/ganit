@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Home - Ganit</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />       
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css" />
         <script type="text/javascript" src="js/jquery.js"></script>
@@ -37,19 +36,22 @@
                     <h4>Choices <span class="close">X</span></h4>
                     <div>
                         <ul class="choices">
-                            <li>Addition</li>
-                            <li>Division</li>
-                            <li>Subtraction</li>
-                            <li>Cross Product</li>
                             <li>Number</li>
                             <li>Identifier</li>
                             <li>Equality</li>
+                            <li>Addition</li>
+                            <li>Subtraction</li>
+                            <li>Division</li>
+                            <li>Cross Product</li>
+                            <li>Dot Product</li>
+                            <li>Invisible Product</li>
                             <li>Square Root</li>
                             <li>Root</li>
                             <li>Power</li>
-                            <li>Round Brackets</li>
-                            <li>Square Brackets</li>
-                            <li>Curly Brackets</li>
+                            <li>Brackets</li>
+                            <li>Function</li>
+                            <li>Summation</li>
+                            <li>Integration</li>
                         </ul>
                     </div>
                 </div>
@@ -67,11 +69,85 @@
                         <p>Please enter an identifier</p>
                         <p><input type="text" class="text-input" /></p>
                         <p><button class="ok">OK</button></p>
+                        <p>Or select from the list below</p>
+                        <ul class="symbols">
+                            <li>&plusmn;</li>
+                            <li>&infin;</li>
+                            <li>&pi;</li>
+                            <li>&Phi;</li>
+                            <li>&Psi;</li>
+                            <li>&Omega;</li>
+                            <li>&alpha;</li>
+                            <li>&beta;</li>
+                            <li>&gamma;</li>
+                            <li>&delta;</li>
+                            <li>&theta;</li>
+                            <li>&lambda;</li>
+                            <li>&there4;</li>
+                            <li>&psi;</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="operandsDialog dialog">
+                    <h4>Operands <span class="close">X</span></h4>
+                    <div>
+                        <p>Please select a symbol</p>
+                        <ul class="symbols">
+                            <li>=</li>
+                            <li>+</li>
+                            <li>-</li>
+                            <li>&plusmn;</li>
+                            <li>&bull;</li>
+                            <li>&times;</li>
+                            <li>&divide;</li>
+                            <li>&cap;</li>
+                            <li>&cup;</li>
+                            <li>&sim;</li>
+                            <li>&cong;</li>
+                            <li>&asymp;</li>
+                            <li>&ne;</li>
+                            <li>&equiv;</li>
+                            <li>&le;</li>
+                            <li>&ge;</li>
+                            <li>&sub;</li>
+                            <li>&sup;</li>
+                            <li>&nsub;</li>
+                            <li>&sube;</li>
+                            <li>&supe;</li>
+                            <li>&oplus;</li>
+                            <li>&otimes;</li>
+                            <li>&perp;</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="functionsDialog dialog">
+                    <h4>Functions <span class="close">X</span></h4>
+                    <div>
+                        <ul class="functions">
+                            <li>sin</li>
+                            <li>cos</li>
+                            <li>tan</li>
+                            <li>cosec</li>
+                            <li>sec</li>
+                            <li>cot</li>
+                            <li>log</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bracketsDialog dialog">
+                    <h4>Brackets Type <span class="close">X</span></h4>
+                    <div>
+                        <ul class="brackets">
+                            <li data-type="round">Round ( )</li>
+                            <li data-type="square">Square [ ]</li>
+                            <li data-type="curly">Curly { }</li>
+                            <li data-type="pipe">Pipe | |</li>
+                        </ul>
                     </div>
                 </div>
             </section>
             <div class="clear"></div>
-            <footer>Copyright &copy2011 - Ganit</footer>
+            <footer>Copyright &copy;2011 - Ganit</footer>
         </section>
         <div id="layer"></div>
     </body>
