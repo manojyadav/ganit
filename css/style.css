@@ -14,11 +14,12 @@ p { line-height:1.5em; padding-bottom:1em; }
 nav { padding-left: 8px; }
 .clear:after{ content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 header {margin-bottom: 16px;}
-header h1 {padding: 0;}
-header h1 span {font-size: 14px; color: #221616; font-style: italic; font-weight: normal;}
+header h1 {padding: 0; text-shadow:3px 3px 3px #C18B8B; color: #BA0E0E;}
+header h1 span {font-size: 14px; color: #120202; font-style: italic; font-weight: normal; text-shadow:2px 2px 2px #9A9A9A;}
 nav ul li{ display:inline; }
 nav ul li a, nav ul li a:visited { color:#ffffff; display:block; float:left; font-size:16px; font-weight:bold; margin:4px 8px; padding:3px 16px; text-shadow:0 1px 1px white; text-transform:uppercase; }
-nav ul li.active a, .nodeTypeDialog li:hover {
+nav ul li.active a, .nodeTypeDialog li:hover, button:hover {
+    background-color: #8E5614;
     background-image: -webkit-gradient(
     linear,
     left bottom,
@@ -40,7 +41,8 @@ nav, article, nav ul li a,figure, footer, #page, #content, #sitebar { -moz-borde
 footer { text-align:center; margin-top: 16px; line-height: 30px; }
 #sidebar {float:left; width: 210px; background-color: #564747; border-radius:10px; padding: 16px;}
 #content {background-color:#213E4A; padding:16px; color: #ffffff;}
-nav, footer, .dialog h4 {
+nav, footer, .dialog h4, button {
+    background-color: #222424;
     color: #ffffff;
     background-image: -webkit-gradient(
         linear,
@@ -56,8 +58,9 @@ nav, footer, .dialog h4 {
         );
 
 }
-.markupArea h4, .designerArea h4, .dialog h4 {padding: 4px 16px; -moz-border-radius:10px 10px 0 0; -webkit-border-radius:10px 10px 0 0; border-radius:10px 10px 0 0;}
+.markupArea h4, .designerArea h4, .dialog h4 {padding: 4px 12px; -moz-border-radius:10px 10px 0 0; -webkit-border-radius:10px 10px 0 0; border-radius:10px 10px 0 0; font-weight: normal;}
 .markupArea h4 {
+    background-color: #B53D06;
     background-image: -webkit-gradient(
     linear,
     left bottom,
@@ -72,6 +75,7 @@ background-image: -moz-linear-gradient(
 );
 }
 .designerArea h4 {
+background-color: #A92645;
 background-image: -webkit-gradient(
     linear,
     left bottom,
@@ -91,11 +95,14 @@ background-image: -moz-linear-gradient(
 #code {margin-bottom: 16px; font-size: 14px; border: 2px solid #A92645; border-top: none;}
 #markup {border: 2px solid #B53D06; border-top: none;}
 .nodeTypeDialog div, .dialog div {height: auto;}
-.nodeTypeDialog {width: 150px;}
-.numberDialog {width: 162px;}
-.text-input {border: 1px solid #4F5252;}
+.nodeTypeDialog {}
+.numberDialog {}
+.text-input {border: 1px solid #4F5252; padding: 4px; font-size: 11px;}
 .dialog {display: none; position: fixed;}
 .dialog div {
+ background-color: #A27324;
+ border: 2px solid #222424;
+ border-top: none;
  color: #fff;
  background-image: -webkit-gradient(
     linear,
@@ -112,6 +119,15 @@ background-image: -moz-linear-gradient(
     rgb(171,129,40) 83%
 );   
 }
-.text-input, .nodeTypeDialog li {-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius:6px;}
+.text-input, .nodeTypeDialog li, button {-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius:6px;}
 .nodeTypeDialog li {list-style: none; font-weight: bold; border: 1px solid #fff; padding: 2px 8px 0; margin-bottom: 4px; cursor: pointer;}
-span.close {display: block; float: right; text-align: center; cursor: pointer;}
+span.close {display: block; float: right; text-align: center; cursor: pointer; font-weight: bold; font-size: 14px;}
+button {
+background-color: #000;
+cursor: pointer;
+padding: 2px 8px;
+font-size: 12px;
+font-weight: bold;
+color: #FFFFFF;
+}
+#code math {cursor: pointer;}
