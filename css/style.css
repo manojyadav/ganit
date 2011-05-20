@@ -18,7 +18,8 @@ header h1 {padding: 0; text-shadow:3px 3px 3px #C18B8B; color: #BA0E0E;}
 header h1 span {font-size: 14px; color: #120202; font-style: italic; font-weight: normal; text-shadow:2px 2px 2px #9A9A9A;}
 nav ul li{ display:inline; }
 nav ul li a, nav ul li a:visited { color:#ffffff; display:block; float:left; font-size:16px; font-weight:bold; margin:4px 8px; padding:3px 16px; text-shadow:0 1px 1px white; text-transform:uppercase; }
-nav ul li.active a, .nodeTypeDialog li:hover, .functionsDialog li:hover, button:hover {
+nav ul li.active a, .dialog li:hover, button:hover, span.close:hover {
+    cursor: pointer;
     background-color: #8E5614;
     background-image: -webkit-gradient(
     linear,
@@ -59,6 +60,7 @@ nav, footer, .dialog h4, button {
 
 }
 .markupArea h4, .designerArea h4, .dialog h4 {padding: 4px 12px; -moz-border-radius:10px 10px 0 0; -webkit-border-radius:10px 10px 0 0; border-radius:10px 10px 0 0; font-weight: normal;}
+.dialog h4 {font-weight: bold}
 .markupArea h4 {
     background-color: #B53D06;
     background-image: -webkit-gradient(
@@ -118,9 +120,33 @@ background-image: -moz-linear-gradient(
     rgb(171,129,40) 83%
 );   
 }
-.text-input, .nodeTypeDialog li, .functionsDialog li, button {-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius:6px;}
-.nodeTypeDialog li, .functionsDialog li {list-style: none; font-weight: bold; border: 1px solid #fff; padding: 2px 8px 0; margin-bottom: 4px; cursor: pointer;}
-span.close {display: block; float: right; text-align: center; cursor: pointer; font-weight: bold; font-size: 14px;}
+.text-input, .dialog li, button {-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius:6px;}
+.dialog li, span.close {-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius:4px;}
+.dialog li {font-weight: bold; border: 1px solid #fff; padding: 2px 8px 0; margin-bottom: 4px;}
+span.close {
+    display: block; 
+    float: right; 
+    text-align: center; 
+    cursor: pointer; 
+    font-size: 14px; 
+    margin-left: 16px; 
+    padding: 1px 5px 0 5px; 
+    border: 2px solid #ffffff;
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.01, rgb(250,0,50)),
+        color-stop(0.51, rgb(250,0,0)),
+        color-stop(0.76, rgb(250,3,3))
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgb(250,0,50) 1%,
+        rgb(250,0,0) 51%,
+        rgb(250,3,3) 76%
+    );
+}
 button {
 background-color: #000;
 cursor: pointer;
@@ -130,16 +156,12 @@ font-weight: bold;
 color: #FFFFFF;
 }
 #code math {cursor: pointer;}
-.symbols{
-    max-width: 190px;
-}
+.symbols{max-width: 214px;}
 .symbols li{
     width: 10px;
     height: 10px;
     display: inline-block;
-    border: 1px solid white;
-    padding: 5px;
-    cursor: pointer;
-    margin: 5px;
+    padding: 8px;
+    margin: 6px;
 }
 #layer {width: 100%; top:0; left:0; position: fixed; display: none; height: 100%; z-index: 1000; background-color: #aaaaaa; opacity:0.4;}
