@@ -18,7 +18,7 @@ header h1 {padding: 0; text-shadow:3px 3px 3px #C18B8B; color: #BA0E0E;}
 header h1 span {font-size: 14px; color: #120202; font-style: italic; font-weight: normal; text-shadow:2px 2px 2px #9A9A9A;}
 nav ul li{ display:inline; }
 nav ul li a, nav ul li a:visited { color:#ffffff; display:block; float:left; font-size:16px; font-weight:bold; margin:4px 8px; padding:3px 16px; text-shadow:0 1px 1px white; text-transform:uppercase; }
-nav ul li.active a, .dialog li:hover, button:hover, span.close:hover {
+nav ul li.active a, .dialog li:hover, button:hover {
     cursor: pointer;
     background-color: #8E5614;
     background-image: -webkit-gradient(
@@ -132,19 +132,37 @@ span.close {
     margin-left: 16px; 
     padding: 1px 5px 0 5px; 
     border: 2px solid #ffffff;
+    background-color: #D10707;
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.01, rgb(212,7,7)),
+    color-stop(0.51, rgb(240,17,17)),
+    color-stop(0.76, rgb(219,7,7))
+);
+background-image: -moz-linear-gradient(
+    center bottom,
+    rgb(212,7,7) 1%,
+    rgb(240,17,17) 51%,
+    rgb(219,7,7) 76%
+);
+}
+span.close:hover {
+    background-color: #F51F03;
     background-image: -webkit-gradient(
         linear,
         left bottom,
         left top,
-        color-stop(0.01, rgb(250,0,50)),
-        color-stop(0.51, rgb(250,0,0)),
-        color-stop(0.76, rgb(250,3,3))
+        color-stop(0.36, rgb(255,21,0)),
+        color-stop(0.5, rgb(235,35,17)),
+        color-stop(0.43, rgb(245,31,3))
     );
     background-image: -moz-linear-gradient(
         center bottom,
-        rgb(250,0,50) 1%,
-        rgb(250,0,0) 51%,
-        rgb(250,3,3) 76%
+        rgb(255,21,0) 36%,
+        rgb(235,35,17) 50%,
+        rgb(245,31,3) 43%
     );
 }
 button {
