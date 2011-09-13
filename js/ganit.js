@@ -1,11 +1,11 @@
-$.fn.swoopIn = function(){
+$.fn.swoopIn = function() {
     $('#layer').show();
     this.setPopupPosition();
     this.css({"-moz-transition": "all .25s ease-out", "-o-transition": "all .25s ease-out"});
     return this;
 };
 
-$.fn.swoopOut = function(){
+$.fn.swoopOut = function() {
     $('#layer').hide();
     this.css({
         "left": "2000px",
@@ -18,17 +18,17 @@ $.fn.swoopOut = function(){
 $(function(){
     var currentNode;
 
-    var createMathElement = function(tag){
+    var createMathElement = function(tag) {
         return document.createElementNS("http://www.w3.org/1998/Math/MathML", tag);
     };
     
-    var showNodeTypes = function(event){
+    var showNodeTypes = function(event) {
         event.stopPropagation();
         currentNode = this;
         $(".nodeTypeDialog").swoopIn();
     };
     
-    var createBinaryStructure = function(operationSymbol){
+    var createBinaryStructure = function(operationSymbol) {
         var parent = createMathElement("mrow");
         var operation = createMathElement("mo");
         $(createRecursiveNode()).appendTo(parent);
@@ -40,9 +40,9 @@ $(function(){
         return parent;
     };
     
-    var createFenceStructure = function(type){
+    var createFenceStructure = function(type) {
         var mfenced = createMathElement("mfenced");
-        $(mfenced).click(function(){
+        $(mfenced).click(function() {
             currentNode = this;
             $(".bracketsDialog").swoopIn();
         });
@@ -50,23 +50,27 @@ $(function(){
         return mfenced;
     };
     
-    var updateMarkup = function(){
-        $("#markup").text($("#code").html());
+    var updateMarkup = function() {
+        $("#markup")
+            .text($("#code")
+            .html());
     };
     
-    var createRecursiveNode = function(txt){
+    var createRecursiveNode = function(txt) {
         var node = createMathElement("mrow");
         var t = (txt) ? txt : "Begin";
-        $(node).text(t).click(showNodeTypes);
+        $(node)
+            .text(t)
+            .click(showNodeTypes);
         return node;
     };
     
     $("mrow").click(showNodeTypes);
     
-    $(".choices li").click(function(){
+    $(".choices li").click(function() {
         var choice = $(this).text();
         
-        switch (choice){
+        switch (choice) {
             case 'Addition':
                 $(createBinaryStructure("+")).insertAfter(currentNode);
                 $(currentNode).remove();
@@ -96,7 +100,9 @@ $(function(){
                 break;
             case 'Identifier':
                 $(".identifierDialog").swoopIn();
-                $(".identifierDialog input").val('').focus();
+                $(".identifierDialog input")
+                    .val('')
+                    .focus();
                 break;
             case 'Equality':
                 $(createBinaryStructure("=")).insertAfter(currentNode);
@@ -182,23 +188,32 @@ $(function(){
         $(".nodeTypeDialog").swoopOut();
     });
     
-    $(".numberDialog .ok").click(function(){
+    $(".numberDialog .ok").click(function() {
         var mn = createMathElement("mn");
         var num = $(".numberDialog .number").val();
-        if (!isNaN(num)){
-            $(mn).text(num).click(showNodeTypes).insertAfter(currentNode);
+        if (!isNaN(num))
+        {
+            $(mn)
+                .text(num)
+                .click(showNodeTypes)
+                .insertAfter(currentNode);
             $(currentNode).remove();
             $(".numberDialog").swoopOut();
             updateMarkup();
-        }else{
+        }
+        else
+        {
             alert("Sorry, thats not a number!");
         }
     });
     
-    $(".identifierDialog .ok").click(function(){
+    $(".identifierDialog .ok").click(function() {
         var mi = createMathElement("mi");
         var identifier = $(".identifierDialog input").val();
-        $(mi).text(identifier).click(showNodeTypes).insertAfter(currentNode);
+        $(mi)
+            .text(identifier)
+            .click(showNodeTypes)
+            .insertAfter(currentNode);
         $(currentNode).remove();
         $(".identifierDialog").swoopOut();
         updateMarkup();
@@ -206,7 +221,11 @@ $(function(){
     
     $(".identifierDialog .symbols li").click(function(){
         var mi = createMathElement("mi");
-        $(mi).text($(this).html()).click(showNodeTypes).insertAfter(currentNode);
+        $(mi)
+            .text($(this)
+            .html())
+            .click(showNodeTypes)
+            .insertAfter(currentNode);
         $(currentNode).remove();
         $(".identifierDialog").swoopOut();
         updateMarkup();
