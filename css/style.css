@@ -131,8 +131,7 @@ nav ul li.active a, .dialog li:hover, button:hover
 {
     cursor: pointer;
     background-color: #8E5614;
-    background-image: -webkit-gradient
-    (
+    background-image: -webkit-gradient(
         linear,
         left bottom,
         left top,
@@ -140,8 +139,7 @@ nav ul li.active a, .dialog li:hover, button:hover
         color-stop(0.65, rgb(153,101,32)),
         color-stop(0.83, rgb(171,129,40))
     );
-    background-image: -moz-linear-gradient
-    (
+    background-image: -moz-linear-gradient(
         center bottom,
         rgb(133,75,13) 30%,
         rgb(153,101,32) 65%,
@@ -198,16 +196,14 @@ nav, footer, .dialog h4, button
 {
     background-color: #222424;
     color: #ffffff;
-    background-image: -webkit-gradient
-    (
+    background-image: -webkit-gradient(
         linear,
         left bottom,
         left top,
         color-stop(0.41, rgb(34,36,36)),
         color-stop(0.71, rgb(79,82,82))
     );
-    background-image: -moz-linear-gradient
-    (
+    background-image: -moz-linear-gradient(
         center bottom,
         rgb(34,36,36) 41%,
         rgb(79,82,82) 71%
@@ -231,16 +227,14 @@ nav, footer, .dialog h4, button
 .markupArea h4 
 {
     background-color: #B53D06;
-    background-image: -webkit-gradient
-    (
+    background-image: -webkit-gradient(
         linear,
         left bottom,
         left top,
         color-stop(0.39, rgb(107,38,5)),
         color-stop(0.7, rgb(181,61,6))
     );
-    background-image: -moz-linear-gradient
-    (
+    background-image: -moz-linear-gradient(
         center bottom,
         rgb(107,38,5) 39%,
         rgb(181,61,6) 70%
@@ -250,8 +244,7 @@ nav, footer, .dialog h4, button
 .designerArea h4
 {
     background-color: #A92645;
-    background-image: -webkit-gradient
-    (
+    background-image: -webkit-gradient(
         linear,
         left bottom,
         left top,
@@ -259,8 +252,7 @@ nav, footer, .dialog h4, button
         color-stop(0.65, rgb(153,32,61)),
         color-stop(0.83, rgb(171,38,69))
     );
-    background-image: -moz-linear-gradient
-    (
+    background-image: -moz-linear-gradient(
         center bottom,
         rgb(133,12,36) 30%,
         rgb(153,32,61) 65%,
@@ -322,8 +314,7 @@ nav, footer, .dialog h4, button
     border: 2px solid #222424;
     border-top: none;
     color: #fff;
-    background-image: -webkit-gradient
-    (
+    background-image: -webkit-gradient(
         linear,
         left bottom,
         left top,
@@ -331,8 +322,7 @@ nav, footer, .dialog h4, button
         color-stop(0.65, rgb(153,101,32)),
         color-stop(0.83, rgb(171,129,40))
     );
-    background-image: -moz-linear-gradient
-    (
+    background-image: -moz-linear-gradient(
         center bottom,
         rgb(133,75,13) 30%,
         rgb(153,101,32) 65%,
@@ -373,8 +363,7 @@ span.close
     padding: 1px 5px 0 5px; 
     border: 2px solid #ffffff;
     background-color: #D10707;
-    background-image: -webkit-gradient
-    (
+    background-image: -webkit-gradient(
         linear,
         left bottom,
         left top,
@@ -382,8 +371,7 @@ span.close
         color-stop(0.51, rgb(240,17,17)),
         color-stop(0.76, rgb(219,7,7))
     );
-    background-image: -moz-linear-gradient
-    (
+    background-image: -moz-linear-gradient(
         center bottom,
         rgb(212,7,7) 1%,
         rgb(240,17,17) 51%,
