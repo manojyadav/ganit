@@ -191,7 +191,12 @@ $(function(){
     $(".numberDialog .ok").click(function() {
         var mn = createMathElement("mn");
         var num = $(".numberDialog .number").val();
-        if (!isNaN(num))
+        if (isNaN(num) || num.trim() == '')
+        {
+            alert("Please enter a number!");
+			$(".numberDialog .number").focus();
+        }
+        else
         {
             $(mn)
                 .text(num)
@@ -201,22 +206,26 @@ $(function(){
             $(".numberDialog").swoopOut();
             updateMarkup();
         }
-        else
-        {
-            alert("Sorry, thats not a number!");
-        }
     });
     
     $(".identifierDialog .ok").click(function() {
         var mi = createMathElement("mi");
         var identifier = $(".identifierDialog input").val();
-        $(mi)
-            .text(identifier)
-            .click(showNodeTypes)
-            .insertAfter(currentNode);
-        $(currentNode).remove();
-        $(".identifierDialog").swoopOut();
-        updateMarkup();
+		if (identifier.trim() == '')
+		{
+			alert("Please enter an identifier!");
+			$(".identifierDialog input").focus();
+		}
+		else
+		{
+			$(mi)
+				.text(identifier)
+				.click(showNodeTypes)
+				.insertAfter(currentNode);
+			$(currentNode).remove();
+			$(".identifierDialog").swoopOut();
+			updateMarkup();
+		}
     });
     
     $(".identifierDialog .symbols li").click(function(){
